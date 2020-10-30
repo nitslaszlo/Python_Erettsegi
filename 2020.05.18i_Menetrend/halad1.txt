@@ -1,0 +1,10 @@
+1. állomás: 6:0
+2. állomás: 6:12
+3. állomás: 6:32
+4. állomás: 6:49
+5. állomás: 7:0
+6. állomás: 7:16
+7. állomás: 7:48
+8. állomás: 7:55
+9. állomás: 8:4
+10. állomás: 8:12
