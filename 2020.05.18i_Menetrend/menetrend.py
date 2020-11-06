@@ -1,10 +1,7 @@
-from __future__ import annotations
-import os
 from solution import Solution
 
 
 def main():
-    os.system('cls||clear')
     sol: Solution = Solution('vonat.txt')
 
     print(f'2. feladat\nAz állomások száma: {sol.num_of_stations}\nA vonatok száma: {sol.num_of_trains}')
