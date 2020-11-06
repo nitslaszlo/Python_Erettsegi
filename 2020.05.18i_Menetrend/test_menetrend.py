@@ -17,21 +17,13 @@ class TestTrain(TestCase):
         self.assertEqual(self.train1.station, 0)
         self.assertEqual(self.train2.station, 1)
 
-    def test_depart_time(self):
-        self.assertEqual(self.train1.depart_time, datetime.datetime(2020, 1, 1, 5, 45))
-        self.assertEqual(self.train2.depart_time, -1)
+    def test_time(self):
+        self.assertEqual(self.train1.time, datetime.datetime(2020, 1, 1, 5, 45))
+        self.assertEqual(self.train2.time, datetime.datetime(2020, 1, 1, 6, 0))
 
     def test_arrival_time(self):
-        self.assertEqual(self.train1.arrival_time, -1)
-        self.assertEqual(self.train2.arrival_time, datetime.datetime(2020, 1, 1, 6, 0))
-
-    def test_is_depart(self):
-        self.assertEqual(self.train1.is_depart, True)
-        self.assertEqual(self.train2.is_depart, False)
-
-    def test_is_arrival(self):
-        self.assertEqual(self.train1.is_arrival, False)
-        self.assertEqual(self.train2.is_arrival, True)
+        self.assertEqual(self.train1.time_is_depart, True)
+        self.assertEqual(self.train2.time_is_depart, False)
 
     def test_is_first_station(self):
         self.assertEqual(self.train1.is_first_station, True)

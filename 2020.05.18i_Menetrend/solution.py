@@ -1,7 +1,8 @@
+from __future__ import annotations
 import datetime
+from train import Train
 from typing import List
 from typing import Set
-from train import Train
 
 
 class Solution(object):
@@ -14,9 +15,9 @@ class Solution(object):
         with open(source_file, 'r', encoding='UTF8') as sr:
             for i in sr.read().splitlines():
                 current_train = Train(i)
-                if current_train.is_depart and not current_train.is_first_station:
+                if current_train.time_is_depart and not current_train.is_first_station:
                     previous_data: List[Train] = list(filter(lambda x: x.id == current_train.id, self._trains_data))
-                    current_train.calculate_downtime(previous_data[-1].arrival_time)
+                    current_train.calculate_downtime(previous_data[-1].time)
                 self._trains_data.append(current_train)
         for i in self._trains_data:
             self._trains.add(i.id)
@@ -24,7 +25,7 @@ class Solution(object):
 
     def train_running_time_check(self, train_id: int) -> str:
         train_data: List[Train] = list(filter(lambda x: x.id == train_id, self._trains_data))
-        running_time = Train.calculate_running_time(train_data[0].depart_time, train_data[-1].arrival_time)
+        running_time = Train.calculate_running_time(train_data[0].time, train_data[-1].time)
         if running_time == self._RUNNING_TIME:
             return f'A(z) {train_id}. vonat útja pontosan az előírt ideig tartott'
         elif running_time > self._RUNNING_TIME:
@@ -36,8 +37,8 @@ class Solution(object):
         train_data: List[Train] = list(filter(lambda x: x.id == train_id, self._trains_data))
         with open(f'halad{train_id}.txt', 'w', encoding='UTF8') as sw:
             for i in train_data:
-                if i.is_arrival:
-                    sw.write(f'{i.station}. állomás: {i.arrival_time.hour}:{i.arrival_time.minute}\n')
+                if not i.time_is_depart:
+                    sw.write(f'{i.station}. állomás: {i.time.hour}:{i.time.minute}\n')
 
     def where_are_the_trains(self, time_string: str) -> str:
         output: str = ''
@@ -46,12 +47,12 @@ class Solution(object):
             t: List[Train] = list(filter(lambda x: x.id == i, self._trains_data))
             for c in range(1, len(t)):
                 p = c - 1  # index of previous event
-                if t[p].is_depart:
-                    if t[p].depart_time <= input_time < t[c].arrival_time:
+                if t[p].time_is_depart:
+                    if t[p].time <= input_time < t[c].time:
                         output += \
                             f'A(z) {t[c].id}. vonat a {t[p].station}. és a {t[c].station}. állomás között járt.\n'
                 else:  # is_arrival
-                    if t[p].arrival_time <= input_time < t[c].depart_time:
+                    if t[p].time <= input_time < t[c].time:
                         output += f'A(z) {t[c].id}. vonat a {t[c].station}. állomáson állt.\n'
         return output
 
