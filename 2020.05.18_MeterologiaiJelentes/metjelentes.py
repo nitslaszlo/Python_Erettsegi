@@ -9,8 +9,8 @@ def main() -> None:
     print(m.utolso_jelentes_ideje(input_telepules))
 
     print(f'3. feladat')
-    print(f'A legalacsonyabb hőmérséklet:  {m.min_t_j()} fok.')
-    print(f'A legmagasabb hőmérséklet: {m.max_t_j()} fok.')
+    print(f'A legalacsonyabb hőmérséklet:  {m.min_t_j([])} fok.')
+    print(f'A legmagasabb hőmérséklet: {m.max_t_j([])} fok.')
 
     print('4. feladat')
     if len(m.szelcsendes) == 0:

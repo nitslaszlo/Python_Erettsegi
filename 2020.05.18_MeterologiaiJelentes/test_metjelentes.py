@@ -28,7 +28,7 @@ class TestMegoldas(TestCase):
         self.m: Megoldas = Megoldas('tavirathu13.txt')
 
     def test__telepules_kodok(self):
-        self.assertSetEqual(self.m._telepuleskodok, {'SM', 'PP', 'SN', 'BP', 'PR', 'PA', 'KE', 'BC', 'DC'})
+        self.assertSetEqual(self.m.telepuleskodok, {'SM', 'PP', 'SN', 'BP', 'PR', 'PA', 'KE', 'BC', 'DC'})
 
     def test_utolso_jelentes_ideje(self):
         self.assertEqual(self.m.utolso_jelentes_ideje('SM'), '23:45')

@@ -14,13 +14,13 @@ class Megoldas(object):
                 self._jelentesek.append(Jelentes(i))
 
     @property
-    def _telepuleskodok(self) -> Set[str]:
+    def telepuleskodok(self) -> Set[str]:
         return set(i.telepuleskod for i in self._jelentesek)
 
     @property
     def homerseklet_stat(self) -> str:
         output: str = ''
-        for tk in self._telepuleskodok:
+        for tk in self.telepuleskodok:
             akt_telepules = list(filter(lambda x: x.telepuleskod == tk, self._jelentesek))
             akt_telepules_atlaghoz = list(filter(lambda x: x.atlaghoz, akt_telepules))
             orak = set(i.ora for i in akt_telepules_atlaghoz)
@@ -38,11 +38,11 @@ class Megoldas(object):
     def szelcsendes(self) -> List[Jelentes]:
         return list(filter(lambda x: x.szelcsend, self._jelentesek))
 
-    def max_t_j(self, jelentesek: List[Jelentes] = None) -> Jelentes:
+    def max_t_j(self, jelentesek: List[Jelentes] = []) -> Jelentes:
         jelentesek = jelentesek or self._jelentesek
         return max(jelentesek, key=lambda x: x.homerseklet)
 
-    def min_t_j(self, jelentesek: List[Jelentes] = None) -> Jelentes:
+    def min_t_j(self, jelentesek: List[Jelentes] = []) -> Jelentes:
         jelentesek = jelentesek or self._jelentesek
         return min(jelentesek, key=lambda x: x.homerseklet)
 
@@ -54,7 +54,7 @@ class Megoldas(object):
             return 'Nincs ilyen település!'  # Nem a feladat része!
 
     def write_data(self) -> None:
-        for i in self._telepuleskodok:
+        for i in self.telepuleskodok:
             akt_telepules = list(filter(lambda x: x.telepuleskod == i, self._jelentesek))
             with open(f'txt_files/{i}.txt', 'w', encoding='UTF8') as sw:
                 sw.write(f'{i}\n')
