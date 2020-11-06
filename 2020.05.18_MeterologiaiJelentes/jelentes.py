@@ -1,4 +1,4 @@
-from __future__ import annotations
+from __future__ import annotations  # Az __eq__() metódus Jelentes típusú other paraméteréhez kell
 
 
 class Jelentes(object):
@@ -16,10 +16,10 @@ class Jelentes(object):
     # Unit teszthez kell, nem a megoldás része:
     def __eq__(self, other: Jelentes) -> bool:
         return self.telepuleskod == other.telepuleskod and \
-               self.idopont == other.idopont and \
-               self.szelirany == other.szelirany and \
-               self.erosseg == other.erosseg and \
-               self.homerseklet == other.homerseklet
+            self.idopont == other.idopont and \
+            self.szelirany == other.szelirany and \
+            self.erosseg == other.erosseg and \
+            self.homerseklet == other.homerseklet
 
     @property
     def atlaghoz(self) -> bool:

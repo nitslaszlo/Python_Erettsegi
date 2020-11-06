@@ -1,4 +1,3 @@
-from __future__ import annotations
 from jelentes import Jelentes
 from typing import List
 from typing import Set
