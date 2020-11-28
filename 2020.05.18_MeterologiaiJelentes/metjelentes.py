@@ -15,8 +15,8 @@ def main() -> None:
     if len(m.szelcsendes) == 0:
         print('Nem volt szélcsend a mérések idején.')
     else:
-        for i in m.szelcsendes:
-            print(f'{i.telepuleskod} {i.idopont}')
+        for e in m.szelcsendes:
+            print(f'{e.telepuleskod} {e.idopont}')
 
     print(f'5. feladat\n{m.homerseklet_stat}')
 
