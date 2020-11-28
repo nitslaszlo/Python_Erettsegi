@@ -43,13 +43,13 @@ class Megoldas(object):
     def stat(self) -> List[str]:
         szotar_ido: Dict[str, int] = dict()
         szotar_epizod_db: Dict[str, int] = dict()
-        for i in self._epizodok:
-            if i.cim in szotar_ido:
-                szotar_ido[i.cim] += i.hossz
-                szotar_epizod_db[i.cim] += 1
+        for e in self._epizodok:
+            if e.cim in szotar_ido:
+                szotar_ido[e.cim] += e.hossz
+                szotar_epizod_db[e.cim] += 1
             else:
-                szotar_ido[i.cim] = i.hossz
-                szotar_epizod_db[i.cim] = 1
+                szotar_ido[e.cim] = e.hossz
+                szotar_epizod_db[e.cim] = 1
         vissza: List[str] = list()
         for kulcs in szotar_ido:
             vissza.append(f'{kulcs} {szotar_ido[kulcs]} {szotar_epizod_db[kulcs]}')
@@ -62,18 +62,18 @@ class Megoldas(object):
 
     def nem_latta_meg(self, input_datum: str) -> List[str]:
         vissza: List[str] = list()
-        for i in self._epizodok:
-            if i.ismert_a_vetites_datuma and i.megnezte is False and i.vetites <= input_datum:
-                vissza.append(f'{i.evad_epizod}\t{i.cim}')
+        for e in self._epizodok:
+            if e.ismert_a_vetites_datuma and e.megnezte is False and e.vetites <= input_datum:
+                vissza.append(f'{e.evad_epizod}\t{e.cim}')
         return vissza
 
     def adott_napon_vetitett(self, input_nap: str) -> List[str]:
         vissza: List[str] = list()
-        for i in self._epizodok:
-            if i.ismert_a_vetites_datuma:
-                if Megoldas.hetnapja(i.vetites_ev, i.vetites_ho, i.vetites_nap) == input_nap:
-                    if i.cim not in vissza:
-                        vissza.append(f'{i.cim}')
+        for e in self._epizodok:
+            if e.ismert_a_vetites_datuma:
+                if Megoldas.hetnapja(e.vetites_ev, e.vetites_ho, e.vetites_nap) == input_nap:
+                    if e.cim not in vissza:
+                        vissza.append(f'{e.cim}')
         if len(vissza) == 0:
             vissza.append('Az adott napon nem kerül adásba sorozat.')
         return vissza
