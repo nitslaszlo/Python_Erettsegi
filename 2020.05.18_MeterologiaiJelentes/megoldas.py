@@ -8,7 +8,7 @@ class Megoldas(object):
     _jelentesek: List[Jelentes] = list()
 
     def __init__(self, source_file: str) -> None:
-        with open(source_file, 'r', encoding='UTF8') as sr:
+        with open(source_file, 'r', encoding='utf-8') as sr:
             for i in sr.read().splitlines():
                 self._jelentesek.append(Jelentes(i))
 
@@ -55,7 +55,7 @@ class Megoldas(object):
     def write_data(self) -> None:
         for i in self.telepuleskodok:
             akt_telepules = list(filter(lambda x: x.telepuleskod == i, self._jelentesek))
-            with open(f'txt_files/{i}.txt', 'w', encoding='UTF8') as sw:
+            with open(f'txt_files/{i}.txt', 'w', encoding='utf-8') as sw:
                 sw.write(f'{i}\n')
                 for j in akt_telepules:
                     sw.write(f'{j.idopont} {"#" * j.erosseg}\n')
