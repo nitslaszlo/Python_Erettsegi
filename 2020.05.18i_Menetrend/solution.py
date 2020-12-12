@@ -34,7 +34,7 @@ class Solution(object):
 
     def write_data(self, train_id: int) -> None:
         train_data: List[Train] = list(filter(lambda x: x.id == train_id, self._trains_data))
-        with open(f'halad{train_id}.txt', 'w', encoding='UTF8') as sw:
+        with open(f'halad{train_id}.txt', 'w', encoding='utf-8') as sw:
             for e in train_data:
                 if not e.time_is_depart:
                     sw.write(f'{e.station}. állomás: {e.time.hour}:{e.time.minute}\n')
