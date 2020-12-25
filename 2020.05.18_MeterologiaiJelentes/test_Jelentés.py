@@ -3,9 +3,10 @@ from Jelentés import Jelentés
 
 
 class TestJelentes(TestCase):
-    def setUp(self):
-        self.jel1: Jelentés = Jelentés('BP 0000 VRB02 23')
-        self.jel2: Jelentés = Jelentés('BP 0100 00000 22')
+    @classmethod
+    def setUpClass(cls):
+        cls.jel1: Jelentés = Jelentés('BP 0000 VRB02 23')
+        cls.jel2: Jelentés = Jelentés('BP 0100 00000 22')
 
     def test_atlaghoz(self):
         self.assertEqual(self.jel1.átlaghoz, False)

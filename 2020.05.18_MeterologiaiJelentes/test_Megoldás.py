@@ -5,8 +5,9 @@ from Megoldás import Megoldás
 
 
 class TestMegoldas(TestCase):
-    def setUp(self):
-        self.m: Megoldás = Megoldás('tavirathu13.txt')
+    @classmethod
+    def setUpClass(cls):
+        cls.m: Megoldás = Megoldás('tavirathu13.txt')
 
     def test__telepules_kodok(self):
         self.assertSetEqual(self.m.településkódok, {'SM', 'PP', 'SN', 'BP', 'PR', 'PA', 'KE', 'BC', 'DC'})
