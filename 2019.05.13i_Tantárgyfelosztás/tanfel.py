@@ -14,7 +14,6 @@ def main() -> None:
     # 5. feladat:
     m.ofőket_ír('of.txt')
 
-    # 6. feladat:
     input_osztály: str = input('6. feladat\nOsztály= ')
     input_tantárgy: str = input('Tantárgy= ')
     print(f'Csoportbontás{"ban" if m.csoportbontás_van(input_osztály, input_tantárgy) else " nélkül"} tanulják.')
