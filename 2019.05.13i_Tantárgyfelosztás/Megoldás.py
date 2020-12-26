@@ -1,5 +1,5 @@
 from Beosztás import Beosztás
-from typing import List, OrderedDict, Set
+from typing import List
 
 
 class Megoldás(object):
@@ -17,31 +17,21 @@ class Megoldás(object):
 
     @property
     def összóraszám(self) -> int:
-        return sum(map(lambda x: x.óraszám, self._beosztások))
+        # return sum(map(lambda x: x.óraszám, self._beosztások))
+        return sum(e.óraszám for e in self._beosztások)
 
     def tanári_óraszám(self, név: str) -> int:
-        tanár_bejegyzései: List[Beosztás] = list(filter(lambda x: x.név == név, self._beosztások))
-        return sum(map(lambda x: x.óraszám, tanár_bejegyzései))
+        return sum(e.óraszám for e in filter(lambda x: x.név == név, self._beosztások))
 
     def ofőket_ír(self, fájl_neve: str) -> None:
-        osztalyok: OrderedDict[str, str] = OrderedDict()
-        for beosztás in self._beosztások:
-            if beosztás.tantárgy == 'osztalyfonoki' and beosztás.osztály not in osztalyok:
-                osztalyok[beosztás.osztály] = beosztás.név
         with open(fájl_neve, 'w', encoding='utf-8') as sw:
-            for osztály, ofő in osztalyok.items():
-                sw.write(f'{osztály} - {ofő}\n')
+            for e in filter(lambda x: x.tantárgy == 'osztalyfonoki', self._beosztások):
+                sw.write(f'{e.osztály} - {e.név}\n')
 
     def csoportbontás_van(self, osztály: str, tantárgy: str) -> bool:
-        bejegyzések_száma = 0
-        for beosztás in self._beosztások:
-            if beosztás.osztály == osztály and beosztás.tantárgy == tantárgy:
-                bejegyzések_száma += 1
-        return bejegyzések_száma == 2
+        beosztások_segéd: List[Beosztás] = list(filter(lambda x: x.osztály == osztály and x.tantárgy == tantárgy, self._beosztások))
+        return len(beosztások_segéd) == 2
 
     @property
     def tanárok_száma(self) -> int:
-        tanárok: Set[str] = set()
-        for beosztás in self._beosztások:
-            tanárok.add(beosztás.név)
-        return len(tanárok)
+        return len(set(map(lambda x: x.név, self._beosztások)))
