@@ -55,7 +55,7 @@ class Megoldás(object):
 
     def menetlevelet_ír(self, rendszám: str) -> None:
         akt_áthajtások: List[Áthajtás] = list(filter(lambda x: x.rendszám == rendszám, self._áthajtások))
-        with open(rendszám + '_menetlevel.txt', 'w', encoding='utf-8') as sw:
+        with open('menetlevelek/' + rendszám + '_menetlevel.txt', 'w', encoding='utf-8') as sw:
             for e in akt_áthajtások:
                 if e.kihajtás:
                     sw.write(f'{e.szem_azon}\t{e.nap}. {e.idő}\t{e.km_számláló} km')
