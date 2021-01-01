@@ -53,7 +53,9 @@ class Megoldás(object):
             sor1: str = ''
             sor2: str = ''
             for t in filter(lambda x: x.ez_páratlan_telek, self._telkek):
-                sor1 += t.szín * t.szélesség
+                sor1 += ''.ljust(t.szélesség, t.szín)
+                # vagy:
+                # sor1 += t.szín * t.szélesség
                 sor2 += str(t.házszám).ljust(t.szélesség, ' ')
                 # vagy:
                 # sor2 += str(t.házszám)+' ' * (t.szélesség - len(str(t.házszám)))
