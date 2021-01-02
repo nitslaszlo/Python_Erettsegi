@@ -18,7 +18,7 @@ def main() -> None:
 
     print(f'\n5. feladat\n{m.első_foglalás}\n')
 
-    print(f'6. feladat\n{m.tanár_szabad("Barna Eszter")}\n')
+    print(f'6. feladat\n{m.tanár_szabad("Barna Eszter")}')
     print(f'Barna Eszter legkorábban távozhat: {m.tanár_legkorábban_távozhat("Barna Eszter")}')
 
 

@@ -27,7 +27,10 @@ class Megoldás(object):
     def foglalt_tanárok(self, időpont: str) -> str:
         idő: datetime = datetime.strptime(időpont, '%H:%M')
         nevek: Set[str] = set(e.tanár_neve for e in filter(lambda x: x.időpont == idő, self._foglalások))
-        return '\n'.join(sorted(nevek))
+        ki: str = '\n'.join(sorted(nevek))
+        with open(f'foglalt_tanárok/{időpont.replace(":", "")}.txt', 'w', encoding='utf-8') as sw:
+            sw.write(f'{ki}\n')
+        return ki
 
     def tanár_szabad(self, tanár_neve: str) -> str:
         szabad_időpontok: List[str] = []
