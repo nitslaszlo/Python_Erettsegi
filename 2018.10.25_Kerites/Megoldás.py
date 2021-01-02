@@ -29,20 +29,20 @@ class Megoldás(object):
                 if sor[0] == '0':
                     self._telkek.append(Telek(sor, páros_házszám))
                     páros_házszám += 2
-                if sor[0] == '1':
+                if sor[0] == '1':  # állhatna else is, de így ellenőrizzük az adatsor első adatát is
                     self._telkek.append(Telek(sor, páratlan_házszám))
                     páratlan_házszám += 2
-
-    def létező_házszám(self, házszám: int) -> bool:
-        return len(list(filter(lambda x: x.házszám == házszám, self._telkek))) > 0
 
     def keresett_telek(self, házszám: int) -> Telek:
         return list(filter(lambda x: x.házszám == házszám, self._telkek))[0]
 
+    def _létező_házszám(self, házszám: int) -> bool:
+        return len(list(filter(lambda x: x.házszám == házszám, self._telkek))) > 0
+
     def lehetséges_szín(self, házszám: int) -> str:
         színek: Set[str] = {'A', 'B', 'C', 'D'}
-        for hsz in range(házszám - 1, házszám + 2):
-            if self.létező_házszám(hsz):
+        for hsz in range(házszám - 2, házszám + 3, 2):  # pl.: ha a házszám=83, akkor: 81, 83, 85
+            if self._létező_házszám(hsz):
                 akt_telek: Telek = self.keresett_telek(hsz)
                 if akt_telek.szín in színek:
                     színek.remove(akt_telek.szín)
