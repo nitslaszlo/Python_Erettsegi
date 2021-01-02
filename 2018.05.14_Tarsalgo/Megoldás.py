@@ -53,12 +53,12 @@ class Megoldás(object):
                 sw.write(f'{azon} {db}\n')
 
     def mettől_meddig(self, azon: str) -> str:
-        visza: str = ''
+        mm: str = ''
         for áthaladás in self._áthaladások:
             if áthaladás.azon == azon:
-                visza += áthaladás.idő.strftime('%H:%M')
-                visza += '-' if áthaladás.ez_belépő else '\n'
-        return visza
+                mm += áthaladás.idő.strftime('%H:%M')
+                mm += '-' if áthaladás.ez_belépő else '\n'
+        return mm
 
     def társalgóban_maradt(self, azon: str) -> bool:
         return azon in self.társalgóban_maradtak.split(' ')
