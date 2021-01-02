@@ -14,6 +14,7 @@ def main() -> None:
 
     print(f'5. feladat\nPéldául {m.legtöbben_a_társalgóban.strftime("%H:%M")}-kor voltak legtöbben a társalgóban.\n')
 
+    # 6. feladat:
     input_azon: str = input('6. feladat\nAdja meg a személy azonosítóját! ')
 
     print(f'7. feladat\n{m.mettől_meddig(input_azon)}')
