@@ -47,11 +47,11 @@ class Megoldás(object):
 
     @property
     def kedvezményes_utazás(self) -> int:
-        return len(list(filter(lambda x: x.kedvezményes_utazás is True, self._utasadatok)))
+        return len(list(filter(lambda x: x.kedvezményes_utazás, self._utasadatok)))
 
     @property
     def ingyenes_utazás(self) -> int:
-        return len(list(filter(lambda x: x.ingyenes_utazás is True, self._utasadatok)))
+        return len(list(filter(lambda x: x.ingyenes_utazás, self._utasadatok)))
 
     # 6. feladat:
     @staticmethod
