@@ -1,6 +1,6 @@
 from unittest import TestCase
 from Megoldas import Megoldas
-# import filecmp
+import filecmp
 
 
 class TestMegoldás(TestCase):
@@ -21,7 +21,18 @@ class TestMegoldás(TestCase):
     def test_szavazott_százalék(self):
         self.assertEqual(self.megoldás1.szavazott_százalék, '38.18%')
 
-    # def test_menetlevelek(self):
-    #     for jegy in range(10):
-    #         self.megoldás1.menetlevelet_ír(f'CEG30{jegy}')
-    #         self.assertTrue(filecmp.cmp(f'menetlevelek/CEG30{jegy}_menetlevel.txt', f'menetlevelek_OH/CEG30{jegy}_menetlevel.txt', shallow=False))
+    def test_szavazat_stat(self):
+        self.assertGreater(self.megoldás1.szavazat_stat.find('Független jelöltek 17.53 %'), -1)
+        self.assertGreater(self.megoldás1.szavazat_stat.find('Gyümölcsevők pártja 16.36 %'), -1)
+        self.assertGreater(self.megoldás1.szavazat_stat.find('Zöldségevők pártja 20.03 %'), -1)
+        self.assertGreater(self.megoldás1.szavazat_stat.find('Húsevők pártja 24.59 %'), -1)
+        self.assertGreater(self.megoldás1.szavazat_stat.find('Tejívók szövetsége 21.49 %'), -1)
+
+    def test_győztes_képviselők(self):
+        self.assertGreater(self.megoldás1.győztes_képviselők.find('Joghurt Jakab TISZ'), -1)
+        self.assertGreater(self.megoldás1.győztes_képviselők.find('Narancs Edmond GYEP'), -1)
+        self.assertGreater(self.megoldás1.győztes_képviselők.find('Vadas Marcell HEP'), -1)
+
+    def test_allományt_ír(self):
+        self.megoldás1.állományt_ír('kepviselok.txt')
+        self.assertTrue(filecmp.cmp(f'kepviselok.txt', 'kepviselok_OH.txt', shallow=False))
