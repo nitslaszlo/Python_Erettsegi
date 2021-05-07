@@ -1,11 +1,9 @@
 from Jelentés import Jelentés
-from typing import List
-from typing import Set
 
 
 class Megoldás(object):
     _LAST: int = -1
-    _jelentések: List[Jelentés] = list()
+    _jelentések: list[Jelentés] = list()
 
     def __init__(self, source_file: str) -> None:
         with open(source_file, 'r', encoding='utf-8') as sr:
@@ -13,7 +11,7 @@ class Megoldás(object):
                 self._jelentések.append(Jelentés(i))
 
     @property
-    def településkódok(self) -> Set[str]:
+    def településkódok(self) -> set[str]:
         return set(i.településkód for i in self._jelentések)
 
     @property
@@ -22,7 +20,7 @@ class Megoldás(object):
         for tk in self.településkódok:
             akt_település = list(filter(lambda x: x.településkód == tk, self._jelentések))
             akt_település_átlaghoz = list(filter(lambda x: x.átlaghoz, akt_település))
-            órák: Set[int] = set(i.óra for i in akt_település_átlaghoz)
+            órák: set[int] = set(i.óra for i in akt_település_átlaghoz)
             if len(órák) == 4:  # Ha megvan mind a négy óra (1, 7, 13, 19) az átlaghoz:
                 átlaghőmérséklet = sum(c.hőmérséklet for c in akt_település_átlaghoz) / len(akt_település_átlaghoz)
                 vissza += f'{tk} Középhőmérséklet: {átlaghőmérséklet:.0f};'
@@ -34,14 +32,14 @@ class Megoldás(object):
         return vissza
 
     @property
-    def szélcsendes(self) -> List[Jelentés]:
+    def szélcsendes(self) -> list[Jelentés]:
         return list(filter(lambda x: x.szélcsend, self._jelentések))
 
-    def max_t_j(self, jelentesek: List[Jelentés] = []) -> Jelentés:
+    def max_t_j(self, jelentesek: list[Jelentés] = []) -> Jelentés:
         jelentesek = jelentesek or self._jelentések
         return max(jelentesek, key=lambda x: x.hőmérséklet)
 
-    def min_t_j(self, jelentesek: List[Jelentés] = []) -> Jelentés:
+    def min_t_j(self, jelentesek: list[Jelentés] = []) -> Jelentés:
         jelentesek = jelentesek or self._jelentések
         return min(jelentesek, key=lambda x: x.hőmérséklet)
 
