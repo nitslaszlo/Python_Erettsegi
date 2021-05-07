@@ -1,10 +1,9 @@
 from datetime import datetime
-from typing import Dict, List
 from Áthaladás import Áthaladás
 
 
 class Megoldás(object):
-    _áthaladások: List[Áthaladás] = []
+    _áthaladások: list[Áthaladás] = []
     _MEGFIGYELÉS_VÉGE_PERC: int = 15 * 60
 
     @property
@@ -16,8 +15,8 @@ class Megoldás(object):
         return list(filter(lambda x: x.ez_kilépő, self._áthaladások))[-1].azon
 
     @property
-    def _statisztika(self) -> Dict[str, int]:
-        stat: Dict[str, int] = dict()
+    def _statisztika(self) -> dict[str, int]:
+        stat: dict[str, int] = dict()
         for áthaladás in self._áthaladások:
             if áthaladás.azon in stat:
                 stat[áthaladás.azon] += 1
