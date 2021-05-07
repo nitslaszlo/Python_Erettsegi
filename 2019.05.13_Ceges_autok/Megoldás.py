@@ -1,4 +1,3 @@
-from typing import List
 from Áthajtás import Áthajtás
 
 
@@ -8,7 +7,7 @@ class MaxÁthajtás(object):  # segéd osztály a 6. feladathoz
 
 
 class Megoldás(object):
-    _áthajtások: List[Áthajtás] = []
+    _áthajtások: list[Áthajtás] = []
 
     def __init__(self, forrás: str) -> None:
         with open(forrás, 'r', encoding='utf-8') as sr:
@@ -33,7 +32,7 @@ class Megoldás(object):
     def statisztika(self) -> str:
         vissza: str = ''
         for jegy in range(10):
-            akt_áthajtások: List[Áthajtás] = list(filter(lambda x: x.rendszám == f'CEG30{jegy}', self._áthajtások))
+            akt_áthajtások: list[Áthajtás] = list(filter(lambda x: x.rendszám == f'CEG30{jegy}', self._áthajtások))
             számláló_diff: int = akt_áthajtások[-1].km_számláló - akt_áthajtások[0].km_számláló
             vissza += f'CEG30{jegy} {számláló_diff} km\n'
         return vissza.strip()
@@ -54,7 +53,7 @@ class Megoldás(object):
         return max
 
     def menetlevelet_ír(self, rendszám: str) -> None:
-        akt_áthajtások: List[Áthajtás] = list(filter(lambda x: x.rendszám == rendszám, self._áthajtások))
+        akt_áthajtások: list[Áthajtás] = list(filter(lambda x: x.rendszám == rendszám, self._áthajtások))
         with open('menetlevelek/' + rendszám + '_menetlevel.txt', 'w', encoding='utf-8') as sw:
             for e in akt_áthajtások:
                 if e.kihajtás:
