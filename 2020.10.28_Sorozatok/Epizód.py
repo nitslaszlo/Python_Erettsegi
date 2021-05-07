@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Epizód(object):
-    def __init__(self, adatok: List[str]) -> None:
+    def __init__(self, adatok: list[str]) -> None:
         self.vetítés: str = adatok[0]
         self.cím: str = adatok[1]
         self.évad_epizód: str = adatok[2]
