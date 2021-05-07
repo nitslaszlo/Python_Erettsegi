@@ -1,13 +1,10 @@
-from typing import List
-
-
 class Beosztás(object):
     _név: str
     _tantárgy: str
     _osztály: str
     _óraszám: int
 
-    def __init__(self, adatok: List[str]) -> None:
+    def __init__(self, adatok: list[str]) -> None:
         név, tantárgy, osztály, óraszám = adatok
         self._név = név
         self._tantárgy = tantárgy

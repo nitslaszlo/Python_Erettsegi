@@ -1,13 +1,12 @@
 from Beosztás import Beosztás
-from typing import List
 
 
 class Megoldás(object):
-    _beosztások: List[Beosztás] = []
+    _beosztások: list[Beosztás] = []
 
     def __init__(self, forrás_file: str) -> None:
         with open(forrás_file, 'r', encoding='utf-8') as sr:
-            sorok: List[str] = sr.read().splitlines()
+            sorok: list[str] = sr.read().splitlines()
             for i in range(0, len(sorok), 4):
                 self._beosztások.append(Beosztás(sorok[i:i+4]))
 
@@ -29,7 +28,7 @@ class Megoldás(object):
                 sw.write(f'{e.osztály} - {e.név}\n')
 
     def csoportbontás_van(self, osztály: str, tantárgy: str) -> bool:
-        beosztások_segéd: List[Beosztás] = list(filter(lambda x: x.osztály == osztály and x.tantárgy == tantárgy, self._beosztások))
+        beosztások_segéd: list[Beosztás] = list(filter(lambda x: x.osztály == osztály and x.tantárgy == tantárgy, self._beosztások))
         return len(beosztások_segéd) == 2
 
     @property
