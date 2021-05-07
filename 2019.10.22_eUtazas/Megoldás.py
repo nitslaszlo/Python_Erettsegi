@@ -1,4 +1,3 @@
-from typing import Dict, List
 from FelszállásBérlet import FelszállásBérlet
 from FelszállásJegy import FelszállásJegy
 from Felszállás import Felszállás
@@ -10,7 +9,7 @@ class LegtöbbFelszálló(object):
 
 
 class Megoldás(object):
-    _utasadatok: List[Felszállás] = list()
+    _utasadatok: list[Felszállás] = list()
 
     def __init__(self, forrás: str) -> None:
         with open(forrás, 'r', encoding='UTF8') as sr:
@@ -31,7 +30,7 @@ class Megoldás(object):
 
     @property
     def legtöbb_felszálló(self) -> LegtöbbFelszálló:
-        megálló: Dict[int, int] = dict()
+        megálló: dict[int, int] = dict()
         for utasadat in self._utasadatok:
             if utasadat.megálló_sorszáma in megálló:
                 megálló[utasadat.megálló_sorszáma] += 1
