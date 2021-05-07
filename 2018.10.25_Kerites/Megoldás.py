@@ -1,9 +1,8 @@
-from typing import List, Set
 from Telek import Telek
 
 
 class Megoldás(object):
-    _telkek: List[Telek] = []
+    _telkek: list[Telek] = []
 
     @property
     def telkek_száma(self) -> int:
@@ -15,7 +14,7 @@ class Megoldás(object):
 
     @property
     def szomszédossal_azonos_szín(self) -> int:
-        páratlan_telkek: List[Telek] = list(filter(lambda x: x.ez_páratlan_telek, self._telkek))
+        páratlan_telkek: list[Telek] = list(filter(lambda x: x.ez_páratlan_telek, self._telkek))
         for i in range(len(páratlan_telkek)-1):
             if str.isalpha(páratlan_telkek[i].szín) and páratlan_telkek[i].szín == páratlan_telkek[i+1].szín:
                 return páratlan_telkek[i].házszám
@@ -40,7 +39,7 @@ class Megoldás(object):
         return len(list(filter(lambda x: x.házszám == házszám, self._telkek))) > 0
 
     def lehetséges_szín(self, házszám: int) -> str:
-        színek: Set[str] = {'A', 'B', 'C', 'D'}
+        színek: set[str] = {'A', 'B', 'C', 'D'}
         for hsz in range(házszám - 2, házszám + 3, 2):  # pl.: ha a házszám=83, akkor: 81, 83, 85
             if self._létező_házszám(hsz):
                 akt_telek: Telek = self.keresett_telek(hsz)
