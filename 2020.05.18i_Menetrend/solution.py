@@ -1,13 +1,11 @@
 import datetime
 from train import Train
-from typing import List
-from typing import Set
 
 
 class Solution(object):
-    _trains_data: List[Train] = list()
-    _trains: Set[int] = set()
-    _stations: Set[int] = set()
+    _trains_data: list[Train] = list()
+    _trains: set[int] = set()
+    _stations: set[int] = set()
     _RUNNING_TIME: int = 2 * 60 + 22
 
     def __init__(self, source_file: str) -> None:
@@ -15,7 +13,7 @@ class Solution(object):
             for line in sr.read().splitlines():
                 current_train = Train(line)
                 if current_train.time_is_depart and not current_train.is_first_station:
-                    previous_data: List[Train] = list(filter(lambda x: x.id == current_train.id, self._trains_data))
+                    previous_data: list[Train] = list(filter(lambda x: x.id == current_train.id, self._trains_data))
                     current_train.calculate_downtime(previous_data[-1].time)
                 self._trains_data.append(current_train)
         for e in self._trains_data:
@@ -23,7 +21,7 @@ class Solution(object):
             self._stations.add(e.station)
 
     def train_running_time_check(self, train_id: int) -> str:
-        train_data: List[Train] = list(filter(lambda x: x.id == train_id, self._trains_data))
+        train_data: list[Train] = list(filter(lambda x: x.id == train_id, self._trains_data))
         running_time = Train.calculate_running_time(train_data[0].time, train_data[-1].time)
         if running_time == self._RUNNING_TIME:
             return f'A(z) {train_id}. vonat útja pontosan az előírt ideig tartott'
@@ -33,7 +31,7 @@ class Solution(object):
             return f'A(z) {train_id}. vonat útja {self._RUNNING_TIME - running_time} perccel rövidebb volt az előírtnál'
 
     def write_data(self, train_id: int) -> None:
-        train_data: List[Train] = list(filter(lambda x: x.id == train_id, self._trains_data))
+        train_data: list[Train] = list(filter(lambda x: x.id == train_id, self._trains_data))
         with open(f'halad{train_id}.txt', 'w', encoding='utf-8') as sw:
             for e in train_data:
                 if not e.time_is_depart:
@@ -43,7 +41,7 @@ class Solution(object):
         output: str = ''
         input_time = datetime.datetime(2020, 1, 1, int(time_string.split(' ')[0]), int(time_string.split(' ')[1]))
         for e in self._trains:
-            t: List[Train] = list(filter(lambda x: x.id == e, self._trains_data))
+            t: list[Train] = list(filter(lambda x: x.id == e, self._trains_data))
             for i in range(1, len(t)):
                 p = i - 1  # index of previous event
                 if t[p].time_is_depart:
