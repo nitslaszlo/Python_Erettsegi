@@ -8,7 +8,10 @@ def main() -> None:
     input_oszlop: int = int(input('A mérés sorának azonosítója='))
     print(f'A mért mélység az adott helyen {m.mélység(input_sor, input_oszlop)} dm')
 
-    print(f'3. feladat\nA tó felszíne: {m.felszín} m2, átlagos mélysége: {m.átlagos_mélység:.2f} m')
+    print(f'3. feladat\nA tó felszíne: {m.felszín} m2, átlagos mélysége: {m.átlagos_mélység_m:.2f} m')
+
+    print(m.max_mélység)
+    print(m.legmélyebb_helyek)
 
 
 if __name__ == "__main__":
