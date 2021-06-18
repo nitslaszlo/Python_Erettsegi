@@ -10,8 +10,11 @@ def main() -> None:
 
     print(f'3. feladat\nA tó felszíne: {m.felszín} m2, átlagos mélysége: {m.átlagos_mélység_m:.2f} m')
 
-    print(m.max_mélység)
-    print(m.legmélyebb_helyek)
+    print(f'4. feladat\nA tó legnagyobb mélysége: {m.max_mélység} dm')
+    print(f'A legmélyebb helyek sor-oszlop koordinátái:\n {m.legmélyebb_helyek}')
+
+    print(f'5. feladat\nA tó partvonala {m.partvonal_hossza} m hosszú')
+
 
 
 if __name__ == "__main__":
