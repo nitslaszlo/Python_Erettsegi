@@ -16,6 +16,5 @@ def main() -> None:
     print(f'5. feladat\nA tó partvonala {m.partvonal_hossza} m hosszú')
 
 
-
 if __name__ == "__main__":
     main()
