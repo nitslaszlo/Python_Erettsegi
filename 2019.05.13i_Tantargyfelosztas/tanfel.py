@@ -16,7 +16,8 @@ def main() -> None:
 
     input_osztály: str = input('6. feladat\nOsztály= ')
     input_tantárgy: str = input('Tantárgy= ')
-    print(f'Csoportbontás{"ban" if m.csoportbontás_van(input_osztály, input_tantárgy) else " nélkül"} tanulják.')
+    print(
+        f'Csoportbontás{"ban" if m.csoportbontás_van(input_osztály, input_tantárgy) else " nélkül"} tanulják.')
 
     print(f'7. feladat\nAz iskolában {m.tanárok_száma} tanár tanít.')
 

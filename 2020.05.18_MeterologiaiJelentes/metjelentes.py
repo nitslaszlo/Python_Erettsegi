@@ -7,7 +7,7 @@ def main() -> None:
     input_település: str = input('2. feladat\nAdja meg egy település kódját! Település: ').upper()
     print(m.utolsó_jelentés_ideje(input_település))
 
-    print(f'3. feladat')
+    print('3. feladat')
     print(f'A legalacsonyabb hőmérséklet:  {m.min_t_j([])} fok.')
     print(f'A legmagasabb hőmérséklet: {m.max_t_j([])} fok.')
 

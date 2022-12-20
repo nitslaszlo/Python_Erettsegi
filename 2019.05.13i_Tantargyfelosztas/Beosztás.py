@@ -1,4 +1,4 @@
-class Beosztás(object):
+class Beosztás:
     _név: str
     _tantárgy: str
     _osztály: str

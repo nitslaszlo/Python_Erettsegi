@@ -1,7 +1,7 @@
 from ValasztasiEredmeny import ValasztasiEredmeny
 
 
-class Megoldas(object):
+class Megoldas:
     _eredmények: list[ValasztasiEredmeny] = []
 
     @property

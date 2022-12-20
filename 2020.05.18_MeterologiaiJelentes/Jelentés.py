@@ -1,7 +1,7 @@
 from __future__ import annotations  # Az __eq__() metódus Jelentés típusú other paraméteréhez kell
 
 
-class Jelentés(object):
+class Jelentés:
     def __init__(self, sor: str) -> None:
         településkód, időpont, szélirány_erősség, hőmérséklet = sor.strip().split(' ')
         self.településkód = str(településkód)

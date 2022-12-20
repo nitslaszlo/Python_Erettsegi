@@ -6,12 +6,6 @@ class FelszállásBérlet(Felszállás):
     _típus: str
     _érvényes_idő: datetime
 
-    def __init__(self, sor: str) -> None:
-        super().__init__(sor)
-        típus, érvényes_idő = sor.split(' ')[3:5]
-        self._típus = típus
-        self._érvényes_idő = datetime.strptime(érvényes_idő + '-23:59', '%Y%m%d-%H:%M')
-
     @property
     def érvényes_felszállás(self) -> bool:
         return self._idő <= self._érvényes_idő
@@ -32,3 +26,10 @@ class FelszállásBérlet(Felszállás):
     @property
     def lejárat(self) -> str:
         return self._érvényes_idő.strftime('%Y-%m-%d')
+
+    def __init__(self, sor: str) -> None:
+        super().__init__(sor)
+        típus, érvényes_idő = sor.split(' ')[3:5]
+        self._típus = típus
+        self._érvényes_idő = datetime.strptime(
+            érvényes_idő + '-23:59', '%Y%m%d-%H:%M')

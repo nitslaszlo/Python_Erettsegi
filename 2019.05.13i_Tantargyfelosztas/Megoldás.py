@@ -1,7 +1,7 @@
 from Beosztás import Beosztás
 
 
-class Megoldás(object):
+class Megoldás:
     _beosztások: list[Beosztás] = []
 
     def __init__(self, forrás_file: str) -> None:
@@ -28,7 +28,8 @@ class Megoldás(object):
                 sw.write(f'{e.osztály} - {e.név}\n')
 
     def csoportbontás_van(self, osztály: str, tantárgy: str) -> bool:
-        beosztások_segéd: list[Beosztás] = list(filter(lambda x: x.osztály == osztály and x.tantárgy == tantárgy, self._beosztások))
+        beosztások_segéd: list[Beosztás] = list(filter(
+            lambda x: x.osztály == osztály and x.tantárgy == tantárgy, self._beosztások))
         return len(beosztások_segéd) == 2
 
     @property

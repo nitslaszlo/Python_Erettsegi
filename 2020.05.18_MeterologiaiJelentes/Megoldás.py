@@ -1,9 +1,9 @@
 from Jelentés import Jelentés
 
 
-class Megoldás(object):
+class Megoldás:
     _LAST: int = -1
-    _jelentések: list[Jelentés] = list()
+    _jelentések: list[Jelentés] = []
 
     def __init__(self, source_file: str) -> None:
         with open(source_file, 'r', encoding='utf-8') as sr:

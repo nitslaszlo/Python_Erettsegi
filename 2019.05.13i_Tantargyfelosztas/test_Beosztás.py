@@ -5,7 +5,8 @@ from Beosztás import Beosztás
 class TestFelszállásJegy(TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.beosztás1: Beosztás = Beosztás(['Albatrosz Aladin', 'biologia', '9.a', '2'])
+        cls.beosztás1: Beosztás = Beosztás(
+            ['Albatrosz Aladin', 'biologia', '9.a', '2'])
 
     def test_név(self):
         self.assertEqual(self.beosztás1.név, 'Albatrosz Aladin')

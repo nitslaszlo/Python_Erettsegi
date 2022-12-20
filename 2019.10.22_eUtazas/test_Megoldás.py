@@ -1,6 +1,6 @@
+import filecmp
 from unittest import TestCase
 from Megoldás import Megoldás
-import filecmp
 
 
 class TestMegoldás(TestCase):
@@ -28,4 +28,5 @@ class TestMegoldás(TestCase):
 
     def test_figyelmeztetest_ír(self):
         self.megoldás1.figyelmeztetést_ír('figyelmeztetes.txt')
-        self.assertTrue(filecmp.cmp('figyelmeztetes.txt', 'figyelmeztetesOH.txt', shallow=False))
+        self.assertTrue(filecmp.cmp('figyelmeztetes.txt',
+                        'figyelmeztetesOH.txt', shallow=False))

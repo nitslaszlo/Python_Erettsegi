@@ -1,7 +1,7 @@
 from datetime import datetime
 
 
-class Felszállás(object):
+class Felszállás:
     _megálló_sorszáma: int
     _idő: datetime
     _azon: str

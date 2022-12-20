@@ -4,19 +4,9 @@
         "-s",
         ".",
         "-p",
-        "test*.py"
+        "test_*.py"
     ],
     "python.testing.pytestEnabled": false,
-    "python.testing.nosetestsEnabled": false,
     "python.testing.unittestEnabled": true,
-    "spellright.language": [
-        "en",
-        "hu"
-    ],
-    "spellright.documentTypes": [
-        "markdown",
-        "latex",
-        "plaintext",
-        "python"
-    ]
+    "editor.formatOnSave": true
 }
