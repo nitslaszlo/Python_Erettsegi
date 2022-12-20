@@ -1,6 +1,6 @@
+import filecmp
 from unittest import TestCase
 from Megoldás import Megoldás
-import filecmp
 
 
 class TestMegoldás(TestCase):

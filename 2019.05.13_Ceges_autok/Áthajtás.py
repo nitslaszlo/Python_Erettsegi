@@ -1,4 +1,4 @@
-class Áthajtás(object):
+class Áthajtás:
     _nap: str
     _idő: str
     _rendszám: str

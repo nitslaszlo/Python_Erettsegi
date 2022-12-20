@@ -1,7 +1,7 @@
 from datetime import datetime
 
 
-class Foglalás(object):
+class Foglalás:
     _tanár_neve: str
     _időpont: datetime
     _foglalás_időpontja: datetime

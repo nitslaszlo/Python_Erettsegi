@@ -1,12 +1,12 @@
 from Áthajtás import Áthajtás
 
 
-class MaxÁthajtás(object):  # segéd osztály a 6. feladathoz
+class MaxÁthajtás:  # segéd osztály a 6. feladathoz
     megtett_km: int
     szem_azon: str
 
 
-class Megoldás(object):
+class Megoldás:
     _áthajtások: list[Áthajtás] = []
 
     def __init__(self, forrás: str) -> None:
@@ -16,7 +16,7 @@ class Megoldás(object):
 
     @property
     def utolsó_kivitel(self) -> Áthajtás:
-        return list(filter(lambda x: x.kihajtás,  self._áthajtások))[-1]
+        return list(filter(lambda x: x.kihajtás, self._áthajtások))[-1]
 
     def forgalom(self, nap: str) -> str:
         return '\n'.join(e.forgalom for e in filter(lambda x: x.nap == nap, self._áthajtások))
@@ -39,18 +39,18 @@ class Megoldás(object):
 
     @property
     def max_áthajtás(self) -> MaxÁthajtás:
-        max: MaxÁthajtás = MaxÁthajtás()
-        max.megtett_km = 0
+        max_áthajtás: MaxÁthajtás = MaxÁthajtás()
+        max_áthajtás.megtett_km = 0
         for i in range(len(self._áthajtások)):
             if self._áthajtások[i].kihajtás:
-                for j in range(i+1, len(self._áthajtások)):  # megkeressük, hogy mikor hozták vissza a kocsit:
+                for j in range(i + 1, len(self._áthajtások)):  # megkeressük, hogy mikor hozták vissza a kocsit:
                     if self._áthajtások[j].rendszám == self._áthajtások[i].rendszám:
                         megtett_km: int = self._áthajtások[j].km_számláló - self._áthajtások[i].km_számláló
-                        if megtett_km > max.megtett_km:
-                            max.megtett_km = megtett_km
-                            max.szem_azon = self._áthajtások[j].szem_azon
+                        if megtett_km > max_áthajtás.megtett_km:
+                            max_áthajtás.megtett_km = megtett_km
+                            max_áthajtás.szem_azon = self._áthajtások[j].szem_azon
                         break  # "kilépünk" a belső (beágyazott) ciklusból
-        return max
+        return max_áthajtás
 
     def menetlevelet_ír(self, rendszám: str) -> None:
         akt_áthajtások: list[Áthajtás] = list(filter(lambda x: x.rendszám == rendszám, self._áthajtások))

@@ -1,7 +1,7 @@
 from Telek import Telek
 
 
-class Megoldás(object):
+class Megoldás:
     _telkek: list[Telek] = []
 
     @property

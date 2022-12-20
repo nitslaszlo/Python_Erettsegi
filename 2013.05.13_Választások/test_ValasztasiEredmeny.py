@@ -1,5 +1,5 @@
-from ValasztasiEredmeny import ValasztasiEredmeny
 from unittest import TestCase
+from ValasztasiEredmeny import ValasztasiEredmeny
 
 
 class TestÁthajtás(TestCase):

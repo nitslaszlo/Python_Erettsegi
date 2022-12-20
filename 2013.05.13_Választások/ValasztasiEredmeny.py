@@ -1,4 +1,4 @@
-class ValasztasiEredmeny(object):
+class ValasztasiEredmeny:
     _kerület: int
     _szavazatok: int
     _vnév: str

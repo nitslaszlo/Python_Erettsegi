@@ -46,18 +46,18 @@ class Megoldas(object):
 
     @property
     def _legtöbb_szavazat(self) -> int:
-        max: int = -1
+        max_szavazat: int = -1
         for e in self._eredmények:
-            if e.szavazatok > max:
-                max = e.szavazatok
-        return max
+            if e.szavazatok > max_szavazat:
+                max_szavazat = e.szavazatok
+        return max_szavazat
 
     @property
     def győztes_képviselők(self) -> str:
         vissza: str = ''
-        max: int = self._legtöbb_szavazat
+        max_szavazat: int = self._legtöbb_szavazat
         for e in self._eredmények:
-            if e.szavazatok == max:
+            if e.szavazatok == max_szavazat:
                 vissza += f'{e.név} {e.párt_jel2}\n'
         return vissza
 

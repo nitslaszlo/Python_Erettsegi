@@ -1,0 +1,12 @@
+[MASTER]
+disable=
+    C0114, # missing-module-docstring
+    C0116, # missing-function-docstring
+    C0115, # missing-class-docstring
+    C0103, # disable naming conv.
+    C0301, # disable line too long
+    C2401, # disable non-ascii-name 
+    R1705, # diasble no-else-return
+    C2403, # disable non-ascii-module-import
+    W2402, # disable non-ascii filenames
+    R0903, # disable too few public methods

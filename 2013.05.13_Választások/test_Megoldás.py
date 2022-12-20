@@ -1,6 +1,6 @@
+import filecmp
 from unittest import TestCase
 from Megoldas import Megoldas
-import filecmp
 
 
 class TestMegoldás(TestCase):
@@ -35,4 +35,4 @@ class TestMegoldás(TestCase):
 
     def test_allományt_ír(self):
         self.megoldás1.állományt_ír('kepviselok.txt')
-        self.assertTrue(filecmp.cmp(f'kepviselok.txt', 'kepviselok_OH.txt', shallow=False))
+        self.assertTrue(filecmp.cmp('kepviselok.txt', 'kepviselok_OH.txt', shallow=False))

@@ -2,7 +2,7 @@ from datetime import datetime
 from Áthaladás import Áthaladás
 
 
-class Megoldás(object):
+class Megoldás:
     _áthaladások: list[Áthaladás] = []
     _MEGFIGYELÉS_VÉGE_PERC: int = 15 * 60
 

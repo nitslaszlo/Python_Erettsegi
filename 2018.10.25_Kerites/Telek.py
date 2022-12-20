@@ -1,5 +1,5 @@
 
-class Telek(object):
+class Telek:
     _házszám: int
     _szélesség: int
     _szín: str

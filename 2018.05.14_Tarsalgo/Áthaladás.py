@@ -1,7 +1,7 @@
 from datetime import datetime
 
 
-class Áthaladás(object):
+class Áthaladás:
     _idő: datetime
     _azon: str
     _irány: str

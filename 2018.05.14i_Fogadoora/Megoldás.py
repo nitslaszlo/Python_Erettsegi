@@ -3,7 +3,7 @@ from datetime import timedelta
 from Foglalás import Foglalás
 
 
-class Megoldás(object):
+class Megoldás:
     _foglalások: list[Foglalás] = list()
 
     @property
