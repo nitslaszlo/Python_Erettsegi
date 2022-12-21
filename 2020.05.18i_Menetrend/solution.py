@@ -2,11 +2,23 @@ import datetime
 from train import Train
 
 
-class Solution(object):
-    _trains_data: list[Train] = list()
+class Solution:
+    _trains_data: list[Train] = []
     _trains: set[int] = set()
     _stations: set[int] = set()
     _RUNNING_TIME: int = 2 * 60 + 22
+
+    @property
+    def num_of_trains(self) -> int:
+        return len(self._trains)
+
+    @property
+    def num_of_stations(self) -> int:
+        return len(self._stations)
+
+    @property
+    def max_downtime_data(self) -> Train:
+        return max(self._trains_data, key=lambda x: x.downtime)
 
     def __init__(self, source_file: str) -> None:
         with open(source_file, 'r', encoding='UTF8') as sr:
@@ -52,15 +64,3 @@ class Solution(object):
                     if t[p].time <= input_time < t[i].time:
                         output += f'A(z) {t[i].id}. vonat a {t[i].station}. állomáson állt.\n'
         return output
-
-    @property
-    def num_of_trains(self) -> int:
-        return len(self._trains)
-
-    @property
-    def num_of_stations(self) -> int:
-        return len(self._stations)
-
-    @property
-    def max_downtime_data(self) -> Train:
-        return max(self._trains_data, key=lambda x: x.downtime)

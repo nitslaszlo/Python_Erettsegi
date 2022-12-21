@@ -1,4 +1,4 @@
-class Megoldás(object):
+class Megoldás:
     _matrix: list[list[int]] = list()
 
     @property

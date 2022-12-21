@@ -1,7 +1,7 @@
 import datetime
 
 
-class Train(object):
+class Train:
     @property
     def is_first_station(self) -> bool:
         return self.station == 0

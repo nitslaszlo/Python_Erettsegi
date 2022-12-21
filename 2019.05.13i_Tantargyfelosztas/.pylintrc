@@ -10,3 +10,4 @@ disable=
     C2403, # disable non-ascii-module-import
     W2402, # disable non-ascii filenames
     R0903, # disable too few public methods
+    C0200, # disable consider using enumerate

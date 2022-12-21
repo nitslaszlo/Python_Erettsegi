@@ -1,4 +1,4 @@
-class Epizód(object):
+class Epizód:
     def __init__(self, adatok: list[str]) -> None:
         self.vetítés: str = adatok[0]
         self.cím: str = adatok[1]

@@ -1,8 +1,8 @@
 from Epizód import Epizód
 
 
-class Megoldás(object):
-    _epizódok: list[Epizód] = list()
+class Megoldás:
+    _epizódok: list[Epizód] = []
 
     def __init__(self, forras_file: str) -> None:
         with open(forras_file, 'r', encoding='UTF8') as sr:
@@ -49,9 +49,9 @@ class Megoldás(object):
             else:
                 szótár_idő[e.cím] = e.hossz
                 szótár_epizód_db[e.cím] = 1
-        vissza: list[str] = list()
-        for kulcs in szótár_idő:
-            vissza.append(f'{kulcs} {szótár_idő[kulcs]} {szótár_epizód_db[kulcs]}')
+        vissza: list[str] = []
+        for key, value in szótár_idő.items():
+            vissza.append(f'{key} {value} {szótár_epizód_db[key]}')
         return vissza
 
     def stat_ír(self, file_neve: str) -> None:
